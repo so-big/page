@@ -2,8 +2,42 @@
 <html>
 <meta http-equiv="Content-Language" content="th" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<div  style="display: none" id = "hideAll">
-<div w3-include-html="nevbar.html"></div>
+<div  style="display: none" id = "hideAll"></div>
+<script>
+function includeHTML(vurl,fc,ele){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+		if(ele==='body')
+		{
+			// Typical action to be performed when the document is ready:
+			if (fc===1)
+			{
+					document.body.innerHTML=  document.body.innerHTML+xhttp.responseText;
+			}
+			else{
+					document.body.innerHTML=  xhttp.responseText+document.body.innerHTML;
+			}
+		}
+		else 	
+		{
+			// Typical action to be performed when the document is ready:
+			if (fc===1)
+			{
+					document.getElementById(ele).innerHTML= document.getElementById(ele).innerHTML+xhttp.responseText;
+			}
+			else{
+					document.getElementById(ele).innerHTML=  xhttp.responseText+document.getElementById(ele).innerHTML;
+			}
+		}
+	}
+	};
+	xhttp.open("GET", vurl, true);
+	xhttp.send();
+}
+includeHTML('nevbar.html',0,'body');
+includeHTML('leftbar.html',0,'leftbar');
+</script>
 <style>
 	table, th, td {
 		border:0px solid #ffffff;
@@ -17,25 +51,25 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <table style="width:1024px;margin-left: calc(50% - 512px);background-color:white;height:auto;margin:10px 3px 10px 3px;">
   <tr>
-    <td style="height: 1px; background-color:#ffffff;width:170px;">
-			<div w3-include-html="leftbar.html"></div>
+    <td id="leftbar" style="height: 1px; background-color:#ffffff;width:170px;">
+		
 	</td>
     <td style="height: 1px;background-color:#ffffff;"> 
 		<div style="  margin-left:7px;width:820px; min-height:100%;border-radius: 10px;border:1px solid #000000;border-collapse: collapse;">
 			<div id="field1" style=" margin-left:17px;height:100%;width:800px; border-radius: 10px;">
-				<? include "request.php";?>
+			 
 			</div>
 			<div id="field2" style=" overflow:hidden;display :none;margin-left:17px;height:100%;width:800px; border-radius: 10px;">
 				 
 			</div>
 			<div id="field3" style="display :none;margin-left:17px;height:100%;width:800px; border-radius: 10px;">
-				<? include "pastjob.php";?>
+				 
 			</div>
 			<div id="field4" style="display :none;margin-left:17px;height:100%;width:800px; border-radius: 10px;">
-				<? include "Search_main.php";?>
+				 
 			</div>
 			<div id="field5" style="display :none;margin-left:17px;height:100%;width:800px; border-radius: 10px;">
-				<? include "Search_result.php";?>
+				 
 			</div>
 			<div id="specialfield" style="display :none;margin-left:17px;height:100%;width:800px; border-radius: 10px;">
 				 
@@ -57,3 +91,28 @@
 
 document.getElementById("hideAll").style.display = "block"; 
 </script>
+
+ 
+<script>
+	function menu_click(v){
+		 
+		if(v==='1')
+		{
+			 document.getElementById('1').className ="leftmenu_a";
+			 document.getElementById('2').className ="leftmenu";
+			 document.getElementById('3').className ="leftmenu";
+		}
+		if(v==='2')
+		{
+			 document.getElementById('1').className ="leftmenu";
+			 document.getElementById('2').className ="leftmenu_a";
+			 document.getElementById('3').className ="leftmenu";
+		}
+		if(v==='3')
+		{
+			 document.getElementById('1').className ="leftmenu";
+			 document.getElementById('2').className ="leftmenu";
+			 document.getElementById('3').className ="leftmenu_a";
+		}
+	}
+	 </script>
