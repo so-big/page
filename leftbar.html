@@ -1,0 +1,68 @@
+<style>
+	@font-face {
+		font-family: "thsarabun";
+		src: url(font/THSarabun.ttf) format("truetype");
+	}
+	@font-face {
+		font-family: "thsarabunb";
+		src: url(font/THSarabun_Bold.ttf) format("truetype");
+	}
+	.leftmenu {
+		margin:5px 8px 5px 5px;
+		border-radius: 10px;
+		border:1px solid black;
+		margin-top:15px;
+		padding:25px 10px 25px 10px;
+		background-color:white;
+	}
+	.leftmenu_a {
+		margin:5px 8px 5px 5px;
+		border-radius: 10px;
+		border:1px solid black;
+		margin-top:15px;
+		padding:25px 10px 25px 10px;
+		background-color:black;
+		color:white;
+	}
+	.leftmenu:hover {
+		margin:5px 8px 5px 5px;
+		border-radius: 10px;
+		border:1px solid black;
+		margin-top:15px;
+		padding:25px 10px 25px 10px;
+		background-color:black;
+		color:white;
+	}
+ 
+</style>
+<div style="height:100%;border-radius: 10px;border:1px solid black;border-collapse: collapse;">
+<center>
+	<div style="border-radius: 10px;border:1px solid black;margin:5px 8px 5px 5px; font-size:25px;font-family: 'thsarabunb';padding:12px 10px 12px 10px;background-color:#white;"><a style="margin-left:-15px">Main Menu</a> <i style=" margin:3px 5px 3px 5px;position: absolute;"class="fa fa-bars"></i></div>
+		<div onclick="menu_click('1')" id = "1" class="leftmenu_a"><a id ='11' class="">infomation</br>contact</a></div>
+		<div onclick="menu_click('2')" id = "2"class="leftmenu"><a class="">Now Project</a></div>
+		<div onclick="menu_click('3')" id = "3"class="leftmenu"><a class="">Old Project</a></div>
+</center>
+ </div>
+ <script>
+function menu_click(v){
+	 
+	if(v==='1')
+	{
+		 document.getElementById('1').className ="leftmenu_a";
+		 document.getElementById('2').className ="leftmenu";
+		 document.getElementById('3').className ="leftmenu";
+	}
+	if(v==='2')
+	{
+		 document.getElementById('1').className ="leftmenu";
+		 document.getElementById('2').className ="leftmenu_a";
+		 document.getElementById('3').className ="leftmenu";
+	}
+	if(v==='3')
+	{
+		 document.getElementById('1').className ="leftmenu";
+		 document.getElementById('2').className ="leftmenu";
+		 document.getElementById('3').className ="leftmenu_a";
+	}
+}
+ </script>

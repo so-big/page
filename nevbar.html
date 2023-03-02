@@ -1,0 +1,122 @@
+<style>
+	@font-face {
+		font-family: "thsarabun";
+		src: url(font/THSarabun.ttf) format("truetype");
+	}
+	@font-face {
+		font-family: "thsarabunb";
+		src: url(font/THSarabun_Bold.ttf) format("truetype");
+	}
+	.hover_menu:hover {
+	  cursor: pointer;
+	 
+	}
+	.hover_menu {
+	    overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+</style>
+<head>
+	<title>
+		So-big Project!! create by jatsada thongdonkum (big)
+	</title>
+	<link rel="icon" href="01-img/2015_color.jpg">
+</head> 
+
+<!-- hiddenfunction menu -->
+<div onclick="loginclick_hidden();" id = "menu_hidden_login_3" style="display:none;z-index:1;position:absolute;width:90%;height:90%;"></div>
+<!-- topbar div image-->
+<a href="http://www.eng.nu.ac.th/eng2012/index.php" ><img src="img/index/banner.jpg" style="border-style: solid;margin-left: calc(50% - 512px);" alt="Italian Trulli"></a>
+
+<!-- topbar div banner-->
+
+
+<div style="margin-top:2px;margin-left: calc(50% - 512px);background-color:#af0e0e;width:1024px;border-style: solid;">
+	<div style="width:1024;background-color: black; height: 40px;">
+		<div style="position: absolute;width:150; border-right: 20px solid transparent;border-bottom: 40px solid #ffffff;">
+		</div>
+		<a style="position: absolute;font-size:25px;font-family: 'thsarabunb';color:black;margin-left:10px;padding-top:7px;">So-big Project!! :</a>
+		<a style="position: absolute;font-size:20px;font-family: 'thsarabun';color:white;margin-left:170px;padding-top:10px;">create by jatsada thongdonkum (big) from thailand, showcase website and information</a>
+		<a class = "hover_menu" onclick="profileclick();" id ="menu_profile" style=" visibility:hidden; z-index:1;border-width: thin; border-style:  none none none solid;padding:5px 13px 5px 10px ;text-align: right;
+					 user-select: none;position: absolute;font-size:20px;font-family: 'thsarabun';color:white;margin-left:825px;margin-top:3px;">
+					<i class="fa fa-user"></i>&nbsp โปรไฟล์</a> 
+	</div>
+	
+</div>
+<div id = "showinguser" style="font-size:20px;font-family: 'thsarabun';margin-top:2px;margin-left: calc(50% - 512px);background-color:white;width:1024px;padding:0 0 0 0 ; text-align: right;"></div>
+<script>
+//alert("กำลังปรับปรุง server");
+//window.location.replace("http://www.eng.nu.ac.th/eng2012/index.php");
+//showing id 
+if (sessionStorage.getItem("showing_user") !== null&&sessionStorage.getItem("showing_user") !== ""&&sessionStorage.getItem("showing_user") !== "0")
+{
+	//alert("in");
+	document.getElementById("showinguser").innerHTML="ยินดีต้อนรับ : "+sessionStorage.getItem("showing_user")+"&nbsp";
+}
+else { 
+	//alert("out");
+}
+var loginstate=0;
+// * profile menu hidden is command by leftbar .html
+function login_u(){
+	state=99;//open specialfield from leftbar.html 
+	menu_check();
+	window.location.replace("?page=login_user");
+}
+function login_r(){
+	state=99;//open specialfield from leftbar.html
+	menu_check();
+	window.location.replace("?page=login_admin");
+}
+function profileclick(){
+	loginclick_hidden();
+	if (sessionStorage.getItem("loginstate")==="1"){
+		 
+		menu_click99("?page=profile_admin")
+	}
+	else if (sessionStorage.getItem("loginstate")==="2"){
+		menu_click99("?page=profile_user")
+	}
+}
+//force menu drop down hidden
+function loginclick_hidden(){
+	if(loginstate===1)
+		{
+			loginstate = 0;
+			document.getElementById("menu_hidden_login_1").style.display = "none";
+			document.getElementById("menu_hidden_login_2").style.display = "none";
+			document.getElementById("menu_hidden_login_3").style.display = "none";
+		}
+}
+
+function loginclick(){
+	//alert(sessionStorage.getItem("loginstate"));
+	if(sessionStorage.getItem("loginstate")!==""&&sessionStorage.getItem("loginstate")!==null)
+	{
+		sessionStorage.setItem("loginstate","");
+		sessionStorage.setItem("username","");
+		sessionStorage.setItem("showing_user","");
+		window.location.replace("");
+		location.replace("http://www.eng.nu.ac.th/newstartupidea/update2/");
+		sessionStorage.setItem("state", 1);
+		document.getElementById("5").style.display="none";
+	}
+	
+	else if(loginstate===0)
+	{
+		loginstate=1;
+		document.getElementById("menu_hidden_login_1").style.display = "block";
+		document.getElementById("menu_hidden_login_2").style.display = "block";
+		document.getElementById("menu_hidden_login_3").style.display = "block";
+	}
+	else {
+		loginstate = 0;
+		document.getElementById("menu_hidden_login_1").style.display = "none";
+		document.getElementById("menu_hidden_login_2").style.display = "none";
+		document.getElementById("menu_hidden_login_3").style.display = "none";
+	}
+}
+
+ 
+</script>
