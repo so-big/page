@@ -1,0 +1,56 @@
+<img id="my-image" src="normal.png" width="512" height="512">
+<style>
+#my-image {
+  transition: opacity 0.3s;
+}
+
+#my-image.glowing {
+  opacity: 1;
+}
+
+</style>
+<script>
+let mediaRecorder = null;
+let isGlowing = false;
+
+const startGlow = () => {
+  isGlowing = true;
+  document.getElementById('my-image').classList.add('glowing');
+};
+
+const stopGlow = () => {
+  isGlowing = false;
+  document.getElementById('my-image').classList.remove('glowing');
+};
+
+const startRecording = async () => {
+  mediaRecorder = new MediaRecorder(await navigator.mediaDevices.getUserMedia({ audio: true }));
+
+  mediaRecorder.addEventListener('start', () => {
+    startGlow();
+  });
+
+  mediaRecorder.addEventListener('stop', () => {
+    stopGlow();
+  });
+
+  mediaRecorder.start();
+};
+
+const stopRecording = () => {
+  if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+    mediaRecorder.stop();
+  }
+};
+
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'Space') {
+    if (mediaRecorder && mediaRecorder.state === 'recording') {
+      stopRecording();
+    } else {
+      startRecording();
+    }
+  }
+});
+
+</script>
