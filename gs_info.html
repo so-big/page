@@ -36,13 +36,11 @@
 			color: white;
 			text-align: center;
 			padding: 10px 0;
-			font-size: clamp(16px, 5vw, 40px); /* Auto scale: ขั้นต่ำ 16px, ปรับตาม 5vw, สูงสุด 40px */
+			font-size: clamp(10px, 2.5vw, 40px); /* ปรับให้เล็กลงได้มากขึ้น, สูงสุด 40px */
 			font-family: 'THSarabun Bold', Arial, sans-serif;
 			z-index: 2;
 			line-height: 1;
-			white-space: nowrap; /* ป้องกันการขึ้นบรรทัดใหม่ */
-			overflow: hidden; /* ซ่อนส่วนที่ล้น (ถ้ามี) */
-			text-overflow: ellipsis; /* เพิ่ม ... ถ้าข้อความยาวเกินและถูกตัด */
+			white-space: nowrap; /* อยู่ในบรรทัดเดียว */
 		}
 
         .tab-menu {
