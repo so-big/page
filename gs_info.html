@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GEARLAXY SPACE</title>
     <style>
+        @font-face {
+            font-family: 'THSarabun';
+            src: url('THSarabun.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'THSarabun', Arial, sans-serif; /* ใช้ THSarabun และสำรองด้วย Arial */
             max-width: 100%;
             overflow-x: hidden;
         }
@@ -28,7 +35,7 @@
 
         .tab-menu {
             position: fixed;
-            top: 40px; /* ปรับตามความสูงของ title-bar */
+            top: 40px;
             width: 100%;
             background: #333;
             display: flex;
@@ -51,7 +58,7 @@
         }
 
         .content {
-            margin-top: 100px; /* ปรับให้ขยับลงตาม title-bar และ tab-menu */
+            margin-top: 100px;
             padding: 15px;
             min-height: 100vh;
         }
@@ -83,7 +90,7 @@
     </style>
 </head>
 <body>
-    <div class="title-bar">วิธีการใช้งานอุปกรณ์ต่างๆใน GEARLAXY SPACE</div>
+    <div class="title-bar">GEARLAXY SPACE</div>
     <div class="tab-menu">
         <div class="tab-button active" onclick="showTab('info_tv')">อุปกรณ์TV</div>
         <div class="tab-button" onclick="showTab('info_projector')">โปรเจคเตอร์</div>
@@ -109,15 +116,12 @@
 
     <script>
         function showTab(tabId) {
-            // Remove active class from all buttons and content
             document.querySelectorAll('.tab-button').forEach(button => {
                 button.classList.remove('active');
             });
             document.querySelectorAll('.info').forEach(info => {
                 info.classList.remove('active');
             });
-
-            // Add active class to clicked button and corresponding content
             event.target.classList.add('active');
             document.getElementById(tabId).classList.add('active');
         }
