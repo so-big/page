@@ -12,12 +12,20 @@
             font-style: normal;
         }
 
+        @font-face {
+            font-family: 'THSarabun Bold';
+            src: url('THSarabun Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            font-family: 'THSarabun', Arial, sans-serif; /* ใช้ THSarabun และสำรองด้วย Arial */
+            font-family: 'THSarabun', Arial, sans-serif; /* ฟอนต์ปกติเป็นหลัก */
             max-width: 100%;
             overflow-x: hidden;
+            font-size: 32px;
         }
 
         .title-bar {
@@ -28,14 +36,15 @@
             color: white;
             text-align: center;
             padding: 10px 0;
-            font-size: 20px;
-            font-weight: bold;
+            font-size: 40px;
+            font-family: 'THSarabun Bold', Arial, sans-serif;
             z-index: 2;
+            line-height: 1;
         }
 
         .tab-menu {
             position: fixed;
-            top: 40px;
+            top: 50px;
             width: 100%;
             background: #333;
             display: flex;
@@ -44,23 +53,28 @@
         }
 
         .tab-button {
-            padding: 15px;
+            padding: 5px 0 5px 0;
             color: white;
             text-align: center;
             flex: 1;
             cursor: pointer;
             border-bottom: 2px solid transparent;
+            font-size: 32px;
+            font-family: 'THSarabun', Arial, sans-serif;
+            line-height: 1;
         }
 
         .tab-button.active {
             background: #555;
             border-bottom: 2px solid #fff;
+            font-family: 'THSarabun Bold', Arial, sans-serif;
         }
 
         .content {
-            margin-top: 100px;
+            margin-top: 90px;
             padding: 15px;
             min-height: 100vh;
+            font-family: 'THSarabun', Arial, sans-serif;
         }
 
         .info {
@@ -74,43 +88,55 @@
             display: block;
         }
 
+        .info h2 {
+            font-size: 48px;
+        }
+
+        /* เพิ่ม class ใหม่ */
+        .b_text {
+            font-family: 'THSarabun Bold', Arial, sans-serif; /* ตัวหนา */
+        }
+
         @media (max-width: 480px) {
             .title-bar {
-                font-size: 16px;
+                font-size: 32px;
                 padding: 8px 0;
             }
             .tab-button {
-                font-size: 14px;
-                padding: 10px;
+                font-size: 28px;
+                padding: 4px 0 4px 0;
             }
             .content {
                 padding: 10px;
+            }
+            .info h2 {
+                font-size: 40px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="title-bar">GEARLAXY SPACE</div>
+    <div class="title-bar">วิธีการใช้งานอุปกรณ์ภายใน GEARLAXY SPACE</div>
     <div class="tab-menu">
-        <div class="tab-button active" onclick="showTab('info_tv')">อุปกรณ์TV</div>
-        <div class="tab-button" onclick="showTab('info_projector')">โปรเจคเตอร์</div>
-        <div class="tab-button" onclick="showTab('info_sound')">เครื่องเสียง</div>
+        <div style="padding-top:15px;padding-bottom:5px;" class="tab-button active" onclick="showTab('info_tv')">อุปกรณ์TV</div>
+        <div style="padding-top:15px;padding-bottom:5px;" class="tab-button" onclick="showTab('info_projector')">โปรเจคเตอร์</div>
+        <div style="padding-top:15px;padding-bottom:5px;" class="tab-button" onclick="showTab('info_sound')">เครื่องเสียง</div>
     </div>
 
     <div class="content">
         <div id="info_tv" class="info active">
             <h2>อุปกรณ์TV</h2>
-            <p>นี่คือข้อมูลเกี่ยวกับอุปกรณ์ทีวีต่างๆ ที่เหมาะกับการใช้งานในบ้านและสำนักงาน เนื้อหาจะยาวตามความเหมาะสมกับการอ่านบนโทรศัพท์ในแนวตั้ง Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>นี่คือข้อมูลเกี่ยวกับอุปกรณ์ทีวีต่างๆ ที่เหมาะกับการใช้งานในบ้านและสำนักงาน <span class="b_text">เนื้อหาจะยาวตามความเหมาะสม</span> กับการอ่านบนโทรศัพท์ในแนวตั้ง Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
 
         <div id="info_projector" class="info">
             <h2>โปรเจคเตอร์</h2>
-            <p>ข้อมูลเกี่ยวกับโปรเจคเตอร์สำหรับการนำเสนอและความบันเทิง มีหลากหลายรุ่นให้เลือกตามการใช้งาน Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>ข้อมูลเกี่ยวกับโปรเจคเตอร์สำหรับการนำเสนอและความบันเทิง <span class="b_text">มีหลากหลายรุ่นให้เลือก</span> ตามการใช้งาน Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
 
         <div id="info_sound" class="info">
             <h2>เครื่องเสียง</h2>
-            <p>รายละเอียดเครื่องเสียงคุณภาพสูงสำหรับทุกความต้องการ ไม่ว่าจะเป็นลำโพงหรือระบบโฮมเธียเตอร์ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <p>รายละเอียดเครื่องเสียงคุณภาพสูงสำหรับทุกความต้องการ <span class="b_text">ไม่ว่าจะเป็นลำโพงหรือระบบโฮมเธียเตอร์</span> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
         </div>
     </div>
 
