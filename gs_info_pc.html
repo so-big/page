@@ -51,6 +51,8 @@
 			border: 1px solid #6b89b5; /* กรอบน้ำเงินสว่าง */
 			padding: 15px;
 			background-color: #e6ebf5; /* เทาอ่อนมากเหมือนแสงอวกาศ */
+			width :768px;
+		 
 		}
 		.content h1, .content h2, .content h3 {
 			font-family: 'THSarabunBold', sans-serif;
@@ -64,7 +66,8 @@
 			display: block;  
 		}
 		body {
-			max-width: 400px;
+			margin: 0 auto;
+			max-width: 800px;
 			background-color: #d9e1f2; /* เทาสว่างเหมือนท้องฟ้าอวกาศตอนมีแสง */
 		}
 		.tab-menu {
@@ -134,7 +137,7 @@
 			</div>
 			<div id="info_tv_pc" class="hidden" style="margin-top:-25px;"> 
  
-				<div style="position: relative; width: 320px; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px;">
+				<div style="position: relative; width: 765px; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px;">
 					<img src="gs_file/PC_TV_page-0001.jpg" style="width: 100%; display: block; margin: 0; padding: 0;" alt="Page 1" />
 					</br>
 					<img src="gs_file/PC_TV_page-0002.jpg" style="width: 100%; display: block; margin: 0; padding: 0;" alt="Page 2" />
@@ -146,11 +149,11 @@
 				<button onclick="showTab2x('info_tv','info_tv_Selection')" class="button_back">กลับสู่เมนู</button>
 			</div>
 			 <div id="info_tv_mobile" class="hidden">
-				<h2>ยังไม่มีข้อมูล</h2>
+				<h2>TV1</h2>
 				<button onclick="showTab2x('info_tv','info_tv_Selection')" class="button_back">กลับสู่เมนู</button>
 			</div>
 			<div id="info_tv_advance" class="hidden">
-				<h2>ยังไม่มีข้อมูล</h2>
+				<h2>TV1</h2>
 				<button onclick="showTab2x('info_tv','info_tv_Selection')" class="button_back">กลับสู่เมนู</button>
 			</div>
         </div>
@@ -187,7 +190,7 @@
 			document.getElementById(tabId2).classList.add('active');
 		}
 		function adjustZoom() {
-			const baseWidth = 365; 
+			const baseWidth = 1360; 
 			const screenWidth = window.innerWidth;
 			const zoomLevel = screenWidth / baseWidth;
 			document.body.style.zoom = zoomLevel;
@@ -202,9 +205,9 @@
         // ตรวจสอบคำที่บ่งบอกว่าเป็นโทรศัพท์
         const isMobile = /iphone|ipad|ipod|android|blackberry|windows phone|mobile|tablet/.test(userAgent);
         
-        if (!isMobile) {
+        if (isMobile) {
             // ถ้าไม่ใช่โทรศัพท์ (คือ PC) ให้ redirect ไป gs_info_pc.html
-            window.location.href = "gs_info_pc.html";
+            window.location.href = "gs_info.html";
         }
         // ถ้าเป็นโทรศัพท์ ไม่ต้องทำอะไร (แสดงหน้าเดิมต่อ)
     }
@@ -212,6 +215,5 @@
     // เรียกฟังก์ชันเมื่อหน้าโหลด
     window.onload = checkDevice;
 	</script>
-
 </body>
 </html>
