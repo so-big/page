@@ -28,7 +28,7 @@
             font-size: 32px;
         }
 
-        .title-bar {
+		.title-bar {
 			position: fixed;
 			top: 0;
 			width: 100%;
@@ -40,6 +40,9 @@
 			font-family: 'THSarabun Bold', Arial, sans-serif;
 			z-index: 2;
 			line-height: 1;
+			white-space: nowrap; /* ป้องกันการขึ้นบรรทัดใหม่ */
+			overflow: hidden; /* ซ่อนส่วนที่ล้น (ถ้ามี) */
+			text-overflow: ellipsis; /* เพิ่ม ... ถ้าข้อความยาวเกินและถูกตัด */
 		}
 
         .tab-menu {
