@@ -13,137 +13,143 @@
         }
 
         @font-face {
-            font-family: 'THSarabun Bold';
+            font-family: 'THSarabunBold';
             src: url('THSarabun Bold.ttf') format('truetype');
             font-weight: bold;
             font-style: normal;
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'THSarabun', Arial, sans-serif; /* ฟอนต์ปกติเป็นหลัก */
-            max-width: 100%;
-            overflow-x: hidden;
-            font-size: 32px;
+        .textn {
+            font-family: 'THSarabun', sans-serif;
         }
 
-		.title-bar {
-			position: fixed;
-			top: 0;
-			width: 100%;
-			height: clamp(30px, 5vh, 50px);
-			background: #222;
-			color: white;
-			text-align: center;
-			padding: 0px 0;
-			font-size: clamp(10px, 3vw, 40px);
-			font-family: 'THSarabun Bold', Arial, sans-serif;
-			z-index: 2;
-			white-space: nowrap;
-			display: flex; /* เพิ่ม */
-			align-items: center; /* จัดกึ่งกลางแนวตั้ง */
-			justify-content: center; /* จัดกึ่งกลางแนวนอน (แทน text-align) */
-		}
-
-        .tab-menu {
-            position: fixed;
-            top: clamp(30px, 5vh, 50px);
-            width: 100%;
-			height: auto;
-            background: #333;
-            display: flex;
-            justify-content: space-around;
-            z-index: 1;
+        .textb {
+            font-family: 'THSarabunBold', sans-serif;
+            font-weight: bold;
         }
-
-        .tab-button {
-			padding: 5px 0 5px 0;
-			color: white;
+		.tab-button {
+			display: inline-block;
+			background-color: #4a6388; /* น้ำเงินอ่อนเหมือนท้องฟ้าอวกาศตอนสว่าง */
+			margin-right: -5px;
+			width: 100px;
+			padding: 6px 8px 6px 7px; 
+			color: #ffffff; /* ขาวสำหรับข้อความ */
 			text-align: center;
-			flex: 1;
-			cursor: pointer;
-			border-bottom: 2px solid transparent;
-			font-size: clamp(14px, 2.5vw, 32px); /* Auto scale: ขั้นต่ำ 14px, ปรับตาม 4vw, สูงสุด 32px */
-			font-family: 'THSarabun', Arial, sans-serif;
-			line-height: 1;
-			padding-top:15px;
-			padding-bottom:5px;
+			user-select: none; 
+            cursor: pointer;  
 		}
-
 		.tab-button.active {
-			background: #555;
-			border-bottom: 2px solid #fff;
-			font-family: 'THSarabun Bold', Arial, sans-serif;
+			display: inline-block;
+			background-color: #6b89b5; /* น้ำเงินสว่างขึ้นสำหรับแท็บที่เลือก */
+			margin-right: -5px;
+			width: 100px;
+			padding: 6px 8px 6px 7px; 
+			color: #ffffff; /* ขาว */
+			text-align: center;
 		}
-
-        .content {
-            margin-top: 90px;
-            padding: 15px;
-            min-height: 100vh;
-            font-family: 'THSarabun', Arial, sans-serif;
+		.content {
+			border: 1px solid #6b89b5; /* กรอบน้ำเงินสว่าง */
+			padding: 15px;
+			background-color: #e6ebf5; /* เทาอ่อนมากเหมือนแสงอวกาศ */
+		}
+		.content h1, .content h2, .content h3 {
+			font-family: 'THSarabunBold', sans-serif;
+			font-weight: bold;
+			color: #34495e; /* น้ำเงินเข้มอ่อนสำหรับหัวข้อ */
+		}
+		.content .hidden {
+			display: none;  
+		}
+		.content .hidden.active {
+			display: block;  
+		}
+		body {
+			max-width: 400px;
+			background-color: #d9e1f2; /* เทาสว่างเหมือนท้องฟ้าอวกาศตอนมีแสง */
+		}
+		.tab-menu {
+			border-width: 0px 1px 1px 1px;
+			border-style: solid;
+			border-color: #6b89b5; /* กรอบน้ำเงินสว่าง */
+			background-color: #4a6388; /* น้ำเงินอ่อนสำหรับเมนู */
+			width: calc(100% - 2px);
+		}
+		.tab-menu div {
+			/* ไม่ต้องเปลี่ยนสี */
+		}
+		#info_tv_Selection {
+            padding: 10px;
+            background-color: #ffffff; /* ขาวสำหรับกล่องย่อย */
+            border-radius: 5px;
         }
-
-        .info {
-            display: none;
-            width: 100%;
-            max-width: 480px;
-            margin: 0 auto;
+        #info_tv_Selection h2 {
+            font-size: 24px;
+            margin: 10px 0;
+            padding: 8px;
+            background-color: #6b89b5; /* น้ำเงินสว่างสำหรับกล่อง */
+            border: 1px solid #5a77a3; /* กรอบน้ำเงินอ่อนกว่า */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+			user-select: none; 
+			color: #ffffff; /* ขาวสำหรับข้อความ */
         }
-
-        .info.active {
-            display: block;
+        #info_tv_Selection h2:hover {
+            background-color: #5a77a3; /* น้ำเงินอ่อนลงเมื่อชี้ */
         }
-
-        .info h2 {
-            font-size: 48px;
+        #info_tv_Selection h2 i {
+            margin-right: 8px;
+            color: #ffffff; /* ไอคอนขาว */
         }
-
-        /* เพิ่ม class ใหม่ */
-        .b_text {
-            font-family: 'THSarabun Bold', Arial, sans-serif; /* ตัวหนา */
-        }
-
-        @media (max-width: 480px) {
-            .title-bar {
-                font-size: 32px;
-                padding: 8px 0;
-            }
-            .tab-button {
-                font-size: 28px;
-                padding: 4px 0 4px 0;
-            }
-            .content {
-                padding: 10px;
-            }
-            .info h2 {
-                font-size: 40px;
-            }
-        }
+		.button_back{
+		background-color: #6b89b5; 
+		color: #ffffff; 
+		padding: 6px 12px; 
+		border: 1px solid #5a77a3; 
+		border-radius: 5px; 
+		cursor: pointer; 
+		font-family: 'THSarabunBold', sans-serif; 
+		transition: background-color 0.3s;
+		font-size: 24px;
+		width:320px;
+		}
     </style>
 </head>
 <body>
-    <div class="title-bar">วิธีการใช้งานอุปกรณ์ภายใน GEARLAXY SPACE</div>
+    <div class="textb" onclick="location.reload()" style="cursor: pointer; user-select: none; width: calc(100% - 2px); border-color: #6b89b5; border-style: solid; border-width: 1px 1px 0px 1px; font-size: 24px; background-color: #4a6388; padding: 5px 0px 5px 0px; text-align: center; color: #ffffff;">วิธีการใช้งานอุปกรณ์ภายใน GEARLAXY SPACE</div>
     <div class="tab-menu">
-        <div class="tab-button active" onclick="showTab('info_tv')">อุปกรณ์TV</div>
+        <div class="tab-button active" onclick="showTab2x('info_tv','info_tv_Selection')">อุปกรณ์TV</div>
         <div class="tab-button" onclick="showTab('info_projector')">โปรเจคเตอร์</div>
         <div class="tab-button" onclick="showTab('info_sound')">เครื่องเสียง</div>
     </div>
 
     <div class="content">
-        <div id="info_tv" class="info active">
-            <h2>อุปกรณ์TV</h2>
-            <p>นี่คือข้อมูลเกี่ยวกับอุปกรณ์ทีวีต่างๆ ที่เหมาะกับการใช้งานในบ้านและสำนักงาน <span class="b_text">เนื้อหาจะยาวตามความเหมาะสม</span> กับการอ่านบนโทรศัพท์ในแนวตั้ง Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div id="info_tv" class="hidden active">
+			<div id="info_tv_Selection" class="hidden active">
+				<h2 onclick="showTab2x('info_tv','info_tv_pc')"><i class="fas fa-desktop"></i> การเชื่อมต่อด้วยคอมพิวเตอร์ </h2>
+				<h2 onclick="showTab2x('info_tv','info_tv_mobile')"><i class="fas fa-mobile-alt"></i> การเชื่อมต่อด้วยสมาร์ตโฟน</h2>
+				<h2 onclick="showTab2x('info_tv','info_tv_advance')"><i class="fas fa-info-circle"></i> ข้อมูลเพิ่มเติม</h2>
+			</div>
+			<div id="info_tv_pc" class="hidden">
+				<iframe src="comic01.pdf" width="100%" height="auto" style="border: none; min-height: 500px; display: block;" sandbox="allow-scripts" onload="this.style.height = this.contentWindow.document.body.scrollHeight + 'px';"></iframe>
+				<button onclick="showTab2x('info_tv','info_tv_Selection')" style="background-color: #6b89b5; color: #ffffff; padding: 6px 12px; border: 1px solid #5a77a3; border-radius: 5px; cursor: pointer; font-family: 'THSarabunBold', sans-serif; transition: background-color 0.3s;">กลับไปเลือก</button>
+			</div>
+			 <div id="info_tv_mobile" class="hidden">
+				<h2>TV1</h2>
+				<button onclick="showTab2x('info_tv','info_tv_Selection')" class="button_back">กลับไปเลือก</button>
+			</div>
+			<div id="info_tv_advance" class="hidden">
+				<h2>TV1</h2>
+				<button onclick="showTab2x('info_tv','info_tv_Selection')" class="button_back">กลับไปเลือก</button>
+			</div>
         </div>
 
-        <div id="info_projector" class="info">
-            <h2>โปรเจคเตอร์</h2>
-            <p>ข้อมูลเกี่ยวกับโปรเจคเตอร์สำหรับการนำเสนอและความบันเทิง <span class="b_text">มีหลากหลายรุ่นให้เลือก</span> ตามการใช้งาน Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <div id="info_projector" class="hidden">
+            <h2>ยังไม่มีข้อมูล</h2>
         </div>
 
-        <div id="info_sound" class="info">
-            <h2>เครื่องเสียง</h2>
-            <p>รายละเอียดเครื่องเสียงคุณภาพสูงสำหรับทุกความต้องการ <span class="b_text">ไม่ว่าจะเป็นลำโพงหรือระบบโฮมเธียเตอร์</span> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <div id="info_sound" class="hidden">
+            <h2>ยังไม่มีข้อมูล</h2>
         </div>
     </div>
 
@@ -152,12 +158,31 @@
             document.querySelectorAll('.tab-button').forEach(button => {
                 button.classList.remove('active');
             });
-            document.querySelectorAll('.info').forEach(info => {
-                info.classList.remove('active');
+            document.querySelectorAll('.hidden').forEach(hidden => {
+                hidden.classList.remove('active');
             });
             event.target.classList.add('active');
             document.getElementById(tabId).classList.add('active');
         }
+		function showTab2x(tabId1, tabId2) {
+			document.querySelectorAll('.tab-button').forEach(button => {
+				button.classList.remove('active');
+			});
+			document.querySelectorAll('.hidden').forEach(hidden => {
+				hidden.classList.remove('active');
+			});
+			event.target.classList.add('active');
+			document.getElementById(tabId1).classList.add('active');
+			document.getElementById(tabId2).classList.add('active');
+		}
+		function adjustZoom() {
+			const baseWidth = 365; 
+			const screenWidth = window.innerWidth;
+			const zoomLevel = screenWidth / baseWidth;
+			document.body.style.zoom = zoomLevel;
+		}
+		window.onload = adjustZoom;
+		window.onresize = adjustZoom;
     </script>
 </body>
 </html>
