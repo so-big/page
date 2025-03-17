@@ -29,18 +29,18 @@
         }
 
         .title-bar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: #222;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            font-size: 40px;
-            font-family: 'THSarabun Bold', Arial, sans-serif;
-            z-index: 2;
-            line-height: 1;
-        }
+			position: fixed;
+			top: 0;
+			width: 100%;
+			background: #222;
+			color: white;
+			text-align: center;
+			padding: 10px 0;
+			font-size: clamp(16px, 5vw, 40px); /* Auto scale: ขั้นต่ำ 16px, ปรับตาม 5vw, สูงสุด 40px */
+			font-family: 'THSarabun Bold', Arial, sans-serif;
+			z-index: 2;
+			line-height: 1;
+		}
 
         .tab-menu {
             position: fixed;
@@ -53,22 +53,22 @@
         }
 
         .tab-button {
-            padding: 5px 0 5px 0;
-            color: white;
-            text-align: center;
-            flex: 1;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            font-size: 32px;
-            font-family: 'THSarabun', Arial, sans-serif;
-            line-height: 1;
-        }
+			padding: 5px 0 5px 0;
+			color: white;
+			text-align: center;
+			flex: 1;
+			cursor: pointer;
+			border-bottom: 2px solid transparent;
+			font-size: clamp(14px, 4vw, 32px); /* Auto scale: ขั้นต่ำ 14px, ปรับตาม 4vw, สูงสุด 32px */
+			font-family: 'THSarabun', Arial, sans-serif;
+			line-height: 1;
+		}
 
-        .tab-button.active {
-            background: #555;
-            border-bottom: 2px solid #fff;
-            font-family: 'THSarabun Bold', Arial, sans-serif;
-        }
+		.tab-button.active {
+			background: #555;
+			border-bottom: 2px solid #fff;
+			font-family: 'THSarabun Bold', Arial, sans-serif;
+		}
 
         .content {
             margin-top: 90px;
