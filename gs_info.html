@@ -192,8 +192,11 @@
 			const zoomLevel = screenWidth / baseWidth;
 			document.body.style.zoom = zoomLevel;
 		}
-		window.onload = adjustZoom;
-		window.onresize = adjustZoom;
+window.onload = adjustZoom;
+window.onresize = adjustZoom;
+window.addEventListener("orientationchange", function () {
+    setTimeout(adjustZoom, 100); // หน่วงเวลาเพื่อให้ค่าปรับอัปเดตก่อน
+});
     </script>
 	<script>
     // ฟังก์ชันตรวจสอบว่าเป็นโทรศัพท์หรือ PC
