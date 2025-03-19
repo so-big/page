@@ -7,14 +7,14 @@
     <style>
         @font-face {
             font-family: 'THSarabun';
-            src: url('THSarabun.ttf') format('truetype');
+            src: url('/font/THSarabun.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
 
         @font-face {
             font-family: 'THSarabunBold';
-            src: url('THSarabun Bold.ttf') format('truetype');
+            src: url('/font/THSarabunBold.ttf') format('truetype');
             font-weight: bold;
             font-style: normal;
         }
@@ -113,6 +113,25 @@
 		font-size: 24px;
 		width:320px;
 		}
+		.cropped-image {
+			width: calc(100% + 45px); /* ปรับภาพให้กว้างพอดีกับ div */
+			margin-left:-25px;
+			/*margin-top:-25px;*/	
+			height: auto;
+			display: block;
+			/*margin-bottom: -70px;*/ /* ระยะห่างระหว่างรูปแต่ละรูป */		
+ 	
+		}
+		.ruller {
+			position:absolute;
+			height: 5px; 
+			width: calc(100%); 
+			color: blue; 
+			background-color: #6b89b5; 
+			display: block;
+			z-index:9999;
+		}
+	
     </style>
 </head>
 <body>
@@ -134,19 +153,20 @@
 			</div>
 			<div id="info_tv_pc" class="hidden" style="margin-top:-25px;"> 
  
-				<div style="position: relative; width: 320px; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px;">
-					<img src="gs_file/PC_TV_page-0001.jpg" style="width: 100%; display: block; margin: 0; padding: 0;" alt="Page 1" />
-					</br>
-					<img src="gs_file/PC_TV_page-0002.jpg" style="width: 100%; display: block; margin: 0; padding: 0;" alt="Page 2" />
-					</br>
-					<img src="gs_file/PC_TV_page-0003.jpg" style="width: 100%; display: block; margin: 0; padding: 0;" alt="Page 3" />
+				<div style="position: relative; width: 341px;margin-left:-14px; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 25px; margin-bottom: 0.9em; overflow: hidden;  ">
+					<img src="gs_file/PC_TV_page-0001.jpg"  class="cropped-image" alt="Page 1" /> <div class="ruller"></div>
+					<img src="gs_file/PC_TV_page-0002.jpg"  class="cropped-image" alt="Page 2" /> <div class="ruller"></div>
+					<img src="gs_file/PC_TV_page-0003.jpg" class="cropped-image" alt="Page 3" />  
 				</div>
- 
-
 				<button onclick="showTab2x('info_tv','info_tv_Selection')" class="button_back">กลับสู่เมนู</button>
 			</div>
 			 <div id="info_tv_mobile" class="hidden">
-				<h2>ยังไม่มีข้อมูล</h2>
+				<div style="position: relative; width: 341px;margin-left:-14px; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top:  -1px; margin-bottom: 0.9em; overflow: hidden;  ">
+					<img src="gs_file/SP_TV_page-0001.jpg"  class="cropped-image" alt="Page 1" /><div class="ruller"></div>
+					<img src="gs_file/SP_TV_page-0002.jpg"  class="cropped-image" alt="Page 2" /><div class="ruller"></div>
+					<img src="gs_file/SP_TV_page-0003.jpg"  class="cropped-image" alt="Page 3" /><div class="ruller"></div>
+					<img src="gs_file/SP_TV_page-0004.jpg"  class="cropped-image" alt="Page 4" />
+				</div>
 				<button onclick="showTab2x('info_tv','info_tv_Selection')" class="button_back">กลับสู่เมนู</button>
 			</div>
 			<div id="info_tv_advance" class="hidden">
