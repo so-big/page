@@ -31,26 +31,46 @@
 			display: inline-block;
 			background-color: #4a6388; /* น้ำเงินอ่อนเหมือนท้องฟ้าอวกาศตอนสว่าง */
 			margin-right: -5px;
-			width: 100px;
 			padding: 6px 8px 6px 7px; 
 			color: #ffffff; /* ขาวสำหรับข้อความ */
 			text-align: center;
 			user-select: none; 
             cursor: pointer;  
+			width: 28%;
+			@media screen and (max-width: 1366px) {
+				font-size:1rem
+			}
+			@media screen and (min-width: 1366px) {
+				font-size: 28px;
+				width: 150px;
+			}
 		}
 		.tab-button.active {
 			display: inline-block;
 			background-color: #6b89b5; /* น้ำเงินสว่างขึ้นสำหรับแท็บที่เลือก */
 			margin-right: -5px;
-			width: 100px;
 			padding: 6px 8px 6px 7px; 
 			color: #ffffff; /* ขาว */
 			text-align: center;
+			@media screen and (max-width: 1366px) {
+				font-size:1rem	
+			}
+			@media screen and (min-width: 1366px) {
+				font-size: 28px;
+				width: 200px;
+				height:35px;
+			}
 		}
 		.content {
 			border: 1px solid #6b89b5; /* กรอบน้ำเงินสว่าง */
 			padding: 15px;
 			background-color: #e6ebf5; /* เทาอ่อนมากเหมือนแสงอวกาศ */
+			@media screen and (max-width: 1366px) {
+				font-size:1rem	
+			}
+			@media screen and (min-width: 1366px) {
+				font-size: 28px;
+			}
 		}
 		.content h1, .content h2, .content h3 {
 			font-family: 'THSarabunBold', sans-serif;
@@ -62,10 +82,6 @@
 		}
 		.content .hidden.active {
 			display: block;  
-		}
-		body {
-			max-width: 400px;
-			background-color: #d9e1f2; /* เทาสว่างเหมือนท้องฟ้าอวกาศตอนมีแสง */
 		}
 		.tab-menu {
 			border-width: 0px 1px 1px 1px;
@@ -81,9 +97,15 @@
             padding: 10px;
             background-color: #ffffff; /* ขาวสำหรับกล่องย่อย */
             border-radius: 5px;
+			 
         }
         #info_tv_Selection h2 {
-            font-size: 24px;
+			@media screen and (max-width: 1366px) {
+				font-size:1.2rem	
+			}
+			@media screen and (min-width: 1366px) {
+				font-size: 34px;
+			}
             margin: 10px 0;
             padding: 8px;
             background-color: #6b89b5; /* น้ำเงินสว่างสำหรับกล่อง */
@@ -110,68 +132,131 @@
 		cursor: pointer; 
 		font-family: 'THSarabunBold', sans-serif; 
 		transition: background-color 0.3s;
-		font-size: 24px;
-		width:320px;
+		width:100%;
+		margin-top:20px;
+		@media screen and (max-width: 1366px) {
+				font-size:1rem	
+			}
+			@media screen and (min-width: 1366px) {
+				font-size: 28px;
+			}
 		}
+		.image-container {
+		position: relative;
+		width: 340px; /* เท่ากับ body default */
+		margin-left: -15px; /* ชดเชย padding 15px ของ .content */
+		box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16);
+		margin-top: 25px;
+		margin-bottom: 0.9em;
+		overflow: hidden;
+		
+			/* ปรับตาม media queries ของ body */
+			@media screen and (orientation: landscape) {
+				width: 640px; /* เท่ากับ body ในแนวนอน */
+			}
+			
+			@media screen and (min-width: 768px) {
+				width: 768px; /* เท่ากับ body ในจอใหญ่ */
+			}
+		}
+
 		.cropped-image {
-			width: calc(100% + 45px); /* ปรับภาพให้กว้างพอดีกับ div */
-			margin-left:-25px;
-			/*margin-top:-25px;*/	
+			width: 100%; /* เต็มความกว้างของ .image-container */
 			height: auto;
 			display: block;
-			/*margin-bottom: -70px;*/ /* ระยะห่างระหว่างรูปแต่ละรูป */		
- 	
 		}
+
 		.ruller {
-			position:absolute;
-			height: 5px; 
-			width: calc(100%); 
-			color: blue; 
-			background-color: #6b89b5; 
-			display: block;
-			z-index:9999;
+			position: absolute;
+			height: 5px;
+			width: 100%; /* เต็มความกว้างของ .image-container */
+			background-color: #6b89b5;
+			z-index: 9999;
+		 
 		}
-	
+		body {
+			transform-origin: top left;
+			background-color: #d9e1f2;
+			margin: 0 auto;
+			
+			/* Default scale สำหรับแนวตั้ง */
+			@media screen and (orientation: portrait){
+				transform: scale(calc(100vw / 340px));
+			}
+			/* เงื่อนไขสำหรับแนวนอน */
+			@media screen  and (orientation: landscape) {
+				transform: scale(calc(100vh / 340px)); /* ปรับ scale ตามความสูง */
+			}
+			
+			/* เงื่อนไขสำหรับจอใหญ่ */
+			@media screen and (min-width: 1366px) {
+				width:1366px; /* ไม่ scale เมื่อถึงขนาดจริง */
+			}
+		}
+		:root {
+			font-size: calc(100vw / 24);
+			@media screen and (min-width: 1366px) {
+				font-size: 24px;
+			}
+		}
+		.toptext{
+			cursor: pointer; 
+			user-select: none; 
+			width: calc(100% - 2px);
+			border-color: #6b89b5; 
+			border-style: solid; 
+			border-width: 1px 1px 0px 1px; 
+			background-color: #4a6388; 
+			padding: 5px 0px 5px 0px; 
+			text-align: center; color: #ffffff;
+			@media screen and (max-width: 1366px) {
+				font-size:1.6rem	
+			}
+			@media screen and (min-width: 1366px) {
+				font-size: 44px;
+				height:50px;
+			}
+		}
+ 
     </style>
 </head>
 <body>
-    <div class="textb" onclick="location.reload()" style="cursor: pointer; user-select: none; width: calc(100% - 2px); border-color: #6b89b5; border-style: solid; border-width: 1px 1px 0px 1px; font-size: 24px; background-color: #4a6388; padding: 5px 0px 5px 0px; text-align: center; color: #ffffff;">วิธีการใช้งานอุปกรณ์ภายใน GEARLAXY SPACE</div>
+    <div class="textb toptext" onclick="location.reload()" style="">วิธีการใช้งานอุปกรณ์ภายใน GEARLAXY SPACE</div>
     <div class="tab-menu">
-        <div class="tab-button active" onclick="showTab2x('info_tv','info_tv_Selection')">อุปกรณ์TV</div>
-        <div class="tab-button" onclick="showTab('info_projector')">โปรเจคเตอร์</div>
-        <div class="tab-button" onclick="showTab('info_sound')">เครื่องเสียง</div>
+        <div id="menu_tv" class="tab-button active" onclick="showTab3x('info_tv','info_tv_Selection','menu_tv')">อุปกรณ์TV</div>
+        <div id="menu_pj" class="tab-button" onclick="showTab('info_projector')">โปรเจคเตอร์</div>
+        <div id="menu_so" class="tab-button" onclick="showTab('info_sound')">เครื่องเสียง</div>
     </div>
 
     <div class="content">
         <div id="info_tv" class="hidden active">
 			<div id="info_tv_Selection" class="hidden active">
 				<p>การเชื่อมต่อเบื้องต้น :</p>
-				<h2 onclick="showTab2x('info_tv','info_tv_pc')"><i class="fas fa-desktop"></i>&nbsp&nbsp&nbsp-&nbspการเชื่อมต่อด้วยคอมพิวเตอร์ </h2>
-				<h2 onclick="showTab2x('info_tv','info_tv_mobile')"><i class="fas fa-mobile-alt"></i>&nbsp&nbsp&nbsp-&nbspการเชื่อมต่อด้วยสมาร์ตโฟน</h2>
+				<h2 onclick="showTab3x('info_tv','info_tv_pc','menu_tv')"><i class="fas fa-desktop"></i>&nbsp&nbsp&nbsp-&nbspการเชื่อมต่อด้วยคอมพิวเตอร์ </h2>
+				<h2 onclick="showTab3x('info_tv','info_tv_mobile','menu_tv')"><i class="fas fa-mobile-alt"></i>&nbsp&nbsp&nbsp-&nbspการเชื่อมต่อด้วยสมาร์ตโฟน</h2>
 				<p>การใช้งานขั้นสูง :</p>
-				<h2 onclick="showTab2x('info_tv','info_tv_advance')"><i class="fas fa-info-circle"></i>&nbsp&nbsp&nbsp-&nbspข้อมูลเพิ่มเติม</h2>
+				<h2 onclick="showTab3x('info_tv','info_tv_advance','menu_tv')"><i class="fas fa-info-circle"></i>&nbsp&nbsp&nbsp-&nbspข้อมูลเพิ่มเติม</h2>
 			</div>
 			<div id="info_tv_pc" class="hidden" style="margin-top:-25px;"> 
- 
-				<div style="position: relative; width: 341px;margin-left:-14px; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 25px; margin-bottom: 0.9em; overflow: hidden;  ">
+				<div style="position: relative; width: calc(100% + 29px);margin-left:-14px; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); padding-top:25px;margin: 25px auto 0.9em overflow: hidden;  ">
 					<img src="gs_file/PC_TV_page-0001.jpg"  class="cropped-image" alt="Page 1" /> <div class="ruller"></div>
 					<img src="gs_file/PC_TV_page-0002.jpg"  class="cropped-image" alt="Page 2" /> <div class="ruller"></div>
 					<img src="gs_file/PC_TV_page-0003.jpg" class="cropped-image" alt="Page 3" />  
 				</div>
-				<button onclick="showTab2x('info_tv','info_tv_Selection')" class="button_back">กลับสู่เมนู</button>
+				<button onclick="showTab3x('info_tv','info_tv_Selection','menu_tv')" class="button_back">กลับสู่เมนู</button>
 			</div>
 			 <div id="info_tv_mobile" class="hidden">
-				<div style="position: relative; width: 341px;margin-left:-14px; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top:  -1px; margin-bottom: 0.9em; overflow: hidden;  ">
+				<div style="position: relative; width: calc(100% + 29px);margin-left:-14px; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); padding-top:0px;margin: 25px auto 0.9em overflow: hidden;  ">
 					<img src="gs_file/SP_TV_page-0001.jpg"  class="cropped-image" alt="Page 1" /><div class="ruller"></div>
 					<img src="gs_file/SP_TV_page-0002.jpg"  class="cropped-image" alt="Page 2" /><div class="ruller"></div>
 					<img src="gs_file/SP_TV_page-0003.jpg"  class="cropped-image" alt="Page 3" /><div class="ruller"></div>
 					<img src="gs_file/SP_TV_page-0004.jpg"  class="cropped-image" alt="Page 4" />
 				</div>
-				<button onclick="showTab2x('info_tv','info_tv_Selection')" class="button_back">กลับสู่เมนู</button>
+				<button onclick="showTab3x('info_tv','info_tv_Selection','menu_tv')" class="button_back">กลับสู่เมนู</button>
 			</div>
 			<div id="info_tv_advance" class="hidden">
 				<h2>ยังไม่มีข้อมูล</h2>
-				<button onclick="showTab2x('info_tv','info_tv_Selection')" class="button_back">กลับสู่เมนู</button>
+				<button onclick="showTab3x('info_tv','info_tv_Selection','menu_tv')" class="button_back">กลับสู่เมนู</button>
 			</div>
         </div>
 
@@ -206,17 +291,20 @@
 			document.getElementById(tabId1).classList.add('active');
 			document.getElementById(tabId2).classList.add('active');
 		}
-		function adjustZoom() {
-			const baseWidth = 365; 
-			const screenWidth = window.innerWidth;
-			const zoomLevel = screenWidth / baseWidth;
-			document.body.style.zoom = zoomLevel;
+		function showTab3x(tabId1, tabId2,tabId3) {
+			document.querySelectorAll('.tab-button').forEach(button => {
+				button.classList.remove('active');
+			});
+			document.querySelectorAll('.hidden').forEach(hidden => {
+				hidden.classList.remove('active');
+			});
+			event.target.classList.add('active');
+			document.getElementById(tabId1).classList.add('active');
+			document.getElementById(tabId2).classList.add('active');
+			document.getElementById(tabId3).classList.add('active');
 		}
-window.onload = adjustZoom;
-window.onresize = adjustZoom;
-window.addEventListener("orientationchange", function () {
-    setTimeout(adjustZoom, 100); // หน่วงเวลาเพื่อให้ค่าปรับอัปเดตก่อน
-});
+ 
+		 
     </script>
 	<script>
     // ฟังก์ชันตรวจสอบว่าเป็นโทรศัพท์หรือ PC
@@ -227,7 +315,7 @@ window.addEventListener("orientationchange", function () {
         
         if (!isMobile) {
             // ถ้าไม่ใช่โทรศัพท์ (คือ PC) ให้ redirect ไป gs_info_pc.html
-            window.location.href = "gs_info_pc.html";
+            //window.location.href = "gs_info_pc.html";
         }
         // ถ้าเป็นโทรศัพท์ ไม่ต้องทำอะไร (แสดงหน้าเดิมต่อ)
     }
