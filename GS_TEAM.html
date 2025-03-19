@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Send to Google Sheets</title>
+</head>
+<body>
+  <input type="text" id="message" placeholder="พิมพ์ข้อความ">
+  <button onclick="sendData()">ส่งข้อมูล</button>
+  <script>
+    function sendData() {
+      const message = document.getElementById("message").value;
+      console.log("Sending:", message); // ดูว่าข้อความถูกส่งไหม
+      fetch("https://script.google.com/a/macros/nu.ac.th/s/AKfycbzPgenYgcuskwJpvUZE8uzj46Wp5bNxinXuFWsnvZz-S06SzFoOm5d2s6vimWELpv68Ew/exec", {
+        method: "POST",
+        body: JSON.stringify({ message: message }),
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(response => {
+        console.log("Status:", response.status); // ดูสถานะ HTTP
+        if (!response.ok) throw new Error("HTTP Error: " + response.status);
+        return response.text();
+      })
+      .then(result => {
+        console.log("Response:", result); // ดูผลลัพธ์
+        alert("สำเร็จ: " + result);
+      })
+      .catch(error => {
+        console.error("Error:", error); // ดูข้อผิดพลาด
+        alert("เกิดข้อผิดพลาด: " + error);
+      });
+    }
+  </script>
+</body>
+</html>
